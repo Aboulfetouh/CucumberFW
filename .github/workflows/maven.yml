@@ -52,13 +52,10 @@ jobs:
     - name: Update dependency graph
       uses: advanced-security/maven-dependency-submission-action@571e99aab1055c2e71a1e2309b9691de18d6b7d6
     
-    -deploy:
-        name: deploy allure report to GitHub pages
-        steps:
-            - name: Deploy report to Github Pages
-              if: always()
-              uses: peaceiris/actions-gh-pages@v2
-              env:
-                PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-                PUBLISH_BRANCH: master
-                PUBLISH_DIR: allure-history
+    - name: Deploy report to Github Pages
+      if: always()
+      uses: peaceiris/actions-gh-pages@v2
+      env:
+        PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        PUBLISH_BRANCH: master
+        PUBLISH_DIR: allure-history
